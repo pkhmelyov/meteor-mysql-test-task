@@ -22,26 +22,19 @@ if(Meteor.isServer) {
     Meteor.publish('allUsers', function () {
         return mysqlDb.select(
             `SELECT
-                id,
-                login,
-                fname,
-                lname
+                u.id,
+                u.login,
+                u.fname,
+                u.lname,
+                e.alias
             FROM
-                users`,
+                users u
+            LEFT JOIN
+                emails e
+                ON
+                    u.id = e.user_id`,
             [
                 { table: 'users' },
-            ]
-        );
-    });
-
-    Meteor.publish('userEmails', function() {
-        return mysqlDb.select(
-            `SELECT
-                user_id,
-                alias
-            FROM
-                emails`,
-            [
                 { table: 'emails' },
             ]
         );

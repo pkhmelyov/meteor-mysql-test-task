@@ -9,18 +9,18 @@
             <th>Full name</th>
             <th>Emails</th>
         </tr>
-        {{#each users}}
-            {{> userItem}}
+        {{#each userId in userIds}}
+            {{> userItem userId=userId}}
         {{/ each}}
     </table>
 </template>
 
 <template name="userItem">
     <tr>
-        <td>{{login}}</td>
-        <td>{{fname}} {{lname}}</td>
+        <td>{{userLogin}}</td>
+        <td>{{userFullName}}</td>
         <td>
-            {{#each email in emails id}}
+            {{#each email in userEmails}}
                 {{email}}<br />
             {{/each}}
         </td>
