@@ -1,0 +1,28 @@
+<body>
+    {{> userList}}
+</body>
+
+<template name="userList">
+    <table>
+        <tr>
+            <th>Login</th>
+            <th>Full name</th>
+            <th>Emails</th>
+        </tr>
+        {{#each users}}
+            {{> userItem}}
+        {{/ each}}
+    </table>
+</template>
+
+<template name="userItem">
+    <tr>
+        <td>{{login}}</td>
+        <td>{{fname}} {{lname}}</td>
+        <td>
+            {{#each email in emails id}}
+                {{email}}<br />
+            {{/each}}
+        </td>
+    </tr>
+</template>
